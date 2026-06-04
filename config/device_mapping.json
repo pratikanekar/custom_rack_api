@@ -1,0 +1,56 @@
+[
+    {
+        "ip": "10.129.2.123",
+        "port": 8086,
+        "panel_no": "iam-gw-210371",
+        "device_code": "MOD01",
+        "zone": "SLAVE_ID",
+        "device_name": "Power Source A",
+        "measurement": "misc"
+    },
+    {
+        "ip": "10.129.2.23",
+        "port": 8087,
+        "panel_no": "TEST-PAN-0023",
+        "device_code": "MOD51",
+        "zone": "IOIN2",
+        "device_name": "Power Source B",
+        "measurement": "event"
+    },
+    {
+        "ip": "10.129.2.23",
+        "port": 8087,
+        "panel_no": "TEST-PAN-0023",
+        "device_code": "MOD01",
+        "zone": "V1N",
+        "device_name": "Power A Voltage",
+        "measurement": "voltage"
+    },
+    {
+        "ip": "10.129.2.23",
+        "port": 8087,
+        "panel_no": "TEST-PAN-0023",
+        "device_code": "MOD01",
+        "zone": "I1",
+        "device_name": "Power A Current",
+        "measurement": "current"
+    },
+    {
+        "ip": "10.129.2.23",
+        "port": 8087,
+        "panel_no": "TEST-PAN-0023",
+        "device_code": "MOD01",
+        "zone": "V2N",
+        "device_name": "Power B Voltage",
+        "measurement": "voltage"
+    },
+    {
+        "ip": "10.129.2.23",
+        "port": 8087,
+        "panel_no": "TEST-PAN-0023",
+        "device_code": "MOD01",
+        "zone": "I2",
+        "device_name": "Power B Current",
+        "measurement": "current"
+    }
+]
