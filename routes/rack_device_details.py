@@ -9,8 +9,25 @@ import os
 router = APIRouter()
 
 
+@router.get("/get_rack_list", tags=["Rack Device Details"])
+def get_rack_list():
+    r_map = []
+    try:
+        # Get mapping json file path
+        json_file = f"{os.getcwd()}/config/device_mapping.json"
+        with open(json_file, "r") as f:
+            dev_mapping = json.load(f)
+            r_map = dev_mapping.get("rack_mapping", [])
+        
+        return r_map
+    except Exception as e:
+        logger.error(f"Error occurred while fetching rack list - {e}")
+        return r_map
+
+
 @router.get("/get_rack_device_details", tags=["Rack Device Details"])
 def get_rack_device_details(
+    rack_name: str,
     start_time: str,
     end_time: str
 ):
@@ -26,8 +43,8 @@ def get_rack_device_details(
         json_file = f"{os.getcwd()}/config/device_mapping.json"
         with open(json_file, "r") as f:
             dev_mapping = json.load(f)
-            
-        for dev_map in dev_mapping:
+            rack_devices = dev_mapping.get(rack_name, [])
+        for dev_map in rack_devices:
             panel_no = dev_map['panel_no']
             dev_code = dev_map['device_code']
             zone = dev_map['zone']
