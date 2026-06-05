@@ -1,59 +1,598 @@
 {
-    "rack_mapping": ["rack_1", "rack_2", "rack_3"],
-    "rack_1": [
+    "rack_mapping": ["CCR Rack 1", "CCR Rack 2", "CCR NOC Rack", "IT Rack 1", "IT Rack 2"],
+    "IT Rack 1": [
         {
             "device_name": "Power Source A",
-            "ip": "10.129.2.123",
+            "ip": "10.36.15.232",
             "port": 8086,
-            "panel_no": "iam-gw-210371",
-            "device_code": "MOD01",
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD04",
             "zone": "SLAVE_ID",
             "measurement": "misc"
         },
         {
             "device_name": "Power Source B",
-            "ip": "10.129.2.23",
-            "port": 8087,
-            "panel_no": "TEST-PAN-0023",
-            "device_code": "MOD51",
-            "zone": "IOIN2",
-            "measurement": "event"
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD06",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power A Current",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD04",
+            "zone": "AI",
+            "measurement": "current"
         },
         {
             "device_name": "Power A Voltage",
-            "ip": "10.129.2.23",
-            "port": 8087,
-            "panel_no": "TEST-PAN-0023",
-            "device_code": "MOD01",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD04",
             "zone": "V1N",
             "measurement": "voltage"
         },
         {
-            "device_name": "Power A Current",
-            "ip": "10.129.2.23",
-            "port": 8087,
-            "panel_no": "TEST-PAN-0023",
-            "device_code": "MOD01",
-            "zone": "I1",
+            "device_name": "Power A Kw",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD04",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Power B Current",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD06",
+            "zone": "AI",
             "measurement": "current"
         },
         {
             "device_name": "Power B Voltage",
-            "ip": "10.129.2.23",
-            "port": 8087,
-            "panel_no": "TEST-PAN-0023",
-            "device_code": "MOD01",
-            "zone": "V2N",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD06",
+            "zone": "V1N",
             "measurement": "voltage"
         },
         {
-            "device_name": "Power B Current",
-            "ip": "10.129.2.23",
-            "port": 8087,
-            "panel_no": "TEST-PAN-0023",
-            "device_code": "MOD01",
-            "zone": "I2",
+            "device_name": "Power B Kw",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD06",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Front Temperature",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD05",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Rear Temperature",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD07",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Output Load",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:1570",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Battery Health",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:2240",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD12",
+            "zone": "STATUS",
+            "measurement": "event"
+        }
+    ],
+    "IT Rack 2": [
+        {
+            "device_name": "Power Source A",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD08",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power Source B",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD11",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power A Current",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD08",
+            "zone": "AI",
             "measurement": "current"
+        },
+        {
+            "device_name": "Power A Voltage",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD08",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power A Kw",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD08",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Power B Current",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD11",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power B Voltage",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD11",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power B Kw",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD11",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Front Temperature",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD09",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Rear Temperature",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD14",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Output Load",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET25",
+            "zone": "ANALOGINPUT:1570",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Battery Health",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET25",
+            "zone": "ANALOGINPUT:2240",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD10",
+            "zone": "STATUS",
+            "measurement": "event"
+        }
+    ],
+    "CCR Rack 1": [
+       {
+            "device_name": "Power Source A",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD04",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power Source B",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD06",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power A Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD04",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power A Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD04",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power A Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD04",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Power B Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD06",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power B Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD06",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power B Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD06",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Front Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD05",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Rear Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD07",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Output Load",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD22",
+            "zone": "PLOAD",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Battery Health",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD22",
+            "zone": "BATTCHRGLVL",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD19",
+            "zone": "STATUS",
+            "measurement": "event"
+        }
+    ],
+    "CCR Rack 2": [
+       {
+            "device_name": "Power Source A",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD08",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power Source B",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD10",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power A Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD08",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power A Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD08",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power A Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD08",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Power B Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD10",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power B Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD10",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power B Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD10",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Front Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD09",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Rear Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD11",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Output Load",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:1570",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Battery Health",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:2240",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD20",
+            "zone": "STATUS",
+            "measurement": "event"
+        }
+    ],
+    "CCR NOC Rack": [
+       {
+            "device_name": "Power Source A",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD16",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power Source B",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD18",
+            "zone": "SLAVE_ID",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Power A Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD16",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power A Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD16",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power A Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD16",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Power B Current",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD18",
+            "zone": "AI",
+            "measurement": "current"
+        },
+        {
+            "device_name": "Power B Voltage",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD18",
+            "zone": "V1N",
+            "measurement": "voltage"
+        },
+        {
+            "device_name": "Power B Kw",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD18",
+            "zone": "TKW",
+            "measurement": "power"
+        },
+        {
+            "device_name": "Front Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD15",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Rear Temperature",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD17",
+            "zone": "CT",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Output Load",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET02",
+            "zone": "ANALOGINPUT:1570",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "UPS Battery Health",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET02",
+            "zone": "ANALOGINPUT:2240",
+            "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD21",
+            "zone": "STATUS",
+            "measurement": "event"
         }
     ]
 }
