@@ -9,7 +9,8 @@ def get_influx_client(host, port):
             port=port,
             username="admin",
             password="admin123",
-            database="data"
+            database="data",
+            timeout=2 
         )
         if influx_client.ping():
             return influx_client
