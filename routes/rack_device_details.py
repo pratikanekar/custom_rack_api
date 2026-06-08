@@ -9,6 +9,9 @@ import os
 router = APIRouter()
 
 
+get_data = os.getenv("GET_DATA", "influx")
+
+
 @router.get("/get_rack_list", tags=["Rack Device Details"])
 def get_rack_list():
     r_map = []
@@ -31,6 +34,7 @@ def get_rack_device_details(
     start_time: str,
     end_time: str
 ):
+    global get_data
     data = []
     try:
         # Here we convert the start_time and end_time into UTC format
@@ -44,18 +48,105 @@ def get_rack_device_details(
         with open(json_file, "r") as f:
             dev_mapping = json.load(f)
             rack_devices = dev_mapping.get(rack_name, [])
-        for dev_map in rack_devices:
-            panel_no = dev_map['panel_no']
-            dev_code = dev_map['device_code']
-            zone = dev_map['zone']
-            ip = dev_map['ip']
-            port = dev_map['port']
-            dev_name = dev_map['device_name']
-            measurement = dev_map['measurement']
-            try:
-                influx_client = get_influx_client(ip, port)
-                if influx_client:
-                    val = get_data_from_influx1(influx_client, panel_no, dev_code, measurement, start_time, end_time, zone)
+        
+        if get_data == "gateway":
+            gateway_cache = {}
+            unique_gateways = {}
+
+            for dev_map in rack_devices:
+                ip = dev_map["ip"]
+                port = 5001
+
+                if ip not in unique_gateways:
+                    unique_gateways[ip] = port
+
+            for ip, port in unique_gateways.items():
+                status_all_device_url = (
+                    f"http://{ip}:{port}/status_all_device/{{unique-tag}}?unique_tag=all"
+                )
+
+                try:
+                    status_res = get(status_all_device_url, timeout=10)
+
+                    gateway_cache[ip] = {
+                        "status": True,
+                        "data": status_res.json()
+                    }
+
+                except Exception as e:
+                    logger.error(
+                        f"Error occurred while fetching data from gateway {ip}:{port} - {e}"
+                    )
+
+                    gateway_cache[ip] = {
+                        "status": False,
+                        "data": None
+                    }
+
+            for dev_map in rack_devices:
+                panel_no = dev_map['panel_no']
+                dev_code = dev_map['device_code']
+                zone = dev_map['zone']
+                ip = dev_map['ip']
+                port = 5001
+                dev_name = dev_map['device_name']
+                gateway_response = gateway_cache.get(ip)
+
+                if not gateway_response["status"]:
+                    data.append({
+                        "ip": ip,
+                        "port": 5001,
+                        "panel_no": panel_no,
+                        "device_name": dev_name,
+                        "device_code": dev_code,
+                        "zone": zone,
+                        "value": None
+                    })
+                    continue
+
+                all_device_data = gateway_response["data"]
+                
+                device_value = all_device_data.get(f"{dev_code}-{zone}")
+                try:
+                    if 'value' in device_value:
+                        dev_val = round(device_value['value'], 2)
+                except Exception as e:
+                    logger.error(f"Error occurred while fetching value from gateway response for device - {dev_code} and zone - {zone}")
+                    dev_val = None
+
+                data.append({
+                    "ip": ip,
+                    "port": 5001,
+                    "panel_no": panel_no,
+                    "device_name": dev_name,
+                    "device_code": dev_code,
+                    "zone": zone,
+                    "value": dev_val
+                })
+        else:
+            for dev_map in rack_devices:
+                panel_no = dev_map['panel_no']
+                dev_code = dev_map['device_code']
+                zone = dev_map['zone']
+                ip = dev_map['ip']
+                port = dev_map['port']
+                dev_name = dev_map['device_name']
+                measurement = dev_map['measurement']
+                try:
+                    influx_client = get_influx_client(ip, port)
+                    if influx_client:
+                        val = get_data_from_influx1(influx_client, panel_no, dev_code, measurement, start_time, end_time, zone)
+                        data.append({
+                            "ip": ip,
+                            "port": port,
+                            "panel_no": panel_no,
+                            "device_name": dev_name,
+                            "device_code": dev_code,
+                            "zone": zone,
+                            "value": val
+                        })
+                except Exception as e:
+                    logger.error(f"Error occurred while fetching data from influx for device {dev_code} - {e}")
                     data.append({
                         "ip": ip,
                         "port": port,
@@ -63,22 +154,11 @@ def get_rack_device_details(
                         "device_name": dev_name,
                         "device_code": dev_code,
                         "zone": zone,
-                        "value": val
+                        "value": None
                     })
-            except Exception as e:
-                logger.error(f"Error occurred while fetching data from influx for device {dev_code} - {e}")
-                data.append({
-                    "ip": ip,
-                    "port": port,
-                    "panel_no": panel_no,
-                    "device_name": dev_name,
-                    "device_code": dev_code,
-                    "zone": zone,
-                    "value": None
-                })
-            finally:
-                if influx_client:
-                    influx_client.close()
+                finally:
+                    if influx_client:
+                        influx_client.close()
         
         return {"data": data}
     except Exception as e:
@@ -117,6 +197,8 @@ def format_influx_data(data):
         for record in data:
             for rec in record:
                 value = rec['last']
+                if value is not None:
+                    value = round(value, 2)
                 return value
         return value
     except Exception as e:
