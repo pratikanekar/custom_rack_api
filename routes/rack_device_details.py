@@ -37,6 +37,7 @@ def get_rack_device_details(
     global get_data
     data = []
     try:
+        curr_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
         # Here we convert the start_time and end_time into UTC format
         start_time = (datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S") - timedelta(hours=5, minutes=30)).strftime(
             "%Y-%m-%dT%H:%M:%SZ")
@@ -100,7 +101,8 @@ def get_rack_device_details(
                         "device_name": dev_name,
                         "device_code": dev_code,
                         "zone": zone,
-                        "value": None
+                        "value": None,
+                        "time": curr_time
                     })
                     continue
 
@@ -121,7 +123,8 @@ def get_rack_device_details(
                     "device_name": dev_name,
                     "device_code": dev_code,
                     "zone": zone,
-                    "value": dev_val
+                    "value": dev_val,
+                    "time": curr_time
                 })
         else:
             for dev_map in rack_devices:
@@ -135,7 +138,7 @@ def get_rack_device_details(
                 try:
                     influx_client = get_influx_client(ip, port)
                     if influx_client:
-                        val = get_data_from_influx1(influx_client, panel_no, dev_code, measurement, start_time, end_time, zone)
+                        val, l_time = get_data_from_influx1(influx_client, panel_no, dev_code, measurement, start_time, end_time, zone)
                         data.append({
                             "ip": ip,
                             "port": port,
@@ -143,7 +146,8 @@ def get_rack_device_details(
                             "device_name": dev_name,
                             "device_code": dev_code,
                             "zone": zone,
-                            "value": val
+                            "value": val,
+                            "time": l_time
                         })
                 except Exception as e:
                     logger.error(f"Error occurred while fetching data from influx for device {dev_code} - {e}")
@@ -154,7 +158,8 @@ def get_rack_device_details(
                         "device_name": dev_name,
                         "device_code": dev_code,
                         "zone": zone,
-                        "value": None
+                        "value": None,
+                        "time": l_time 
                     })
                 finally:
                     if influx_client:
@@ -193,14 +198,19 @@ def get_data_from_influx1(client, panel_no, dev_code, measurement, start_time, e
 
 def format_influx_data(data):
     value = None
+    l_time = None
     try:
         for record in data:
             for rec in record:
                 value = rec['last']
+                temp_time = rec['time']
+                dt = datetime.strptime(temp_time, "%Y-%m-%dT%H:%M:%SZ")
+                dt = dt + timedelta(hours=5, minutes=30)
+                l_time = dt.strftime("%Y-%m-%dT%H:%M:%SZ")
                 if value is not None:
                     value = round(value, 2)
-                return value
-        return value
+                return value, l_time
+        return value, l_time
     except Exception as e:
         logger.error(f"Error occurred in Occupancy_AQI details format_influx_data {e}")
-        return value
+        return value, l_time

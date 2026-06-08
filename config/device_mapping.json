@@ -113,6 +113,15 @@
             "measurement": "misc"
         },
         {
+            "device_name": "UPS Health Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:239",
+            "measurement": "voltage"
+        },
+        {
             "device_name": "Cooling Panel Status",
             "ip": "10.36.15.232",
             "port": 8086,
@@ -183,6 +192,15 @@
             "device_code": "MOD12",
             "zone": "COMPSPEED",
             "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Compressor Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD12",
+            "zone": "COMPI",
+            "measurement": "current"
         }
     ],
     "IT Rack 2": [
@@ -295,6 +313,15 @@
             "measurement": "misc"
         },
         {
+            "device_name": "UPS Health Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "NET25",
+            "zone": "ANALOGINPUT:239",
+            "measurement": "voltage"
+        },
+        {
             "device_name": "Cooling Panel Status",
             "ip": "10.36.15.232",
             "port": 8086,
@@ -365,6 +392,15 @@
             "device_code": "MOD10",
             "zone": "COMPSPEED",
             "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Compressor Status",
+            "ip": "10.36.15.232",
+            "port": 8086,
+            "panel_no": "iam-gw-210776",
+            "device_code": "MOD10",
+            "zone": "COMPI",
+            "measurement": "current"
         }
     ],
     "CCR Rack 1": [
@@ -477,6 +513,15 @@
             "measurement": "misc"
         },
         {
+            "device_name": "UPS Health Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD22",
+            "zone": "OV1",
+            "measurement": "voltage"
+        },
+        {
             "device_name": "Cooling Panel Status",
             "ip": "10.36.15.233",
             "port": 8086,
@@ -547,6 +592,15 @@
             "device_code": "MOD19",
             "zone": "COMPSPEED",
             "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Compressor Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD19",
+            "zone": "COMPI",
+            "measurement": "current"
         }
     ],
     "CCR Rack 2": [
@@ -659,6 +713,15 @@
             "measurement": "misc"
         },
         {
+            "device_name": "UPS Health Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET26",
+            "zone": "ANALOGINPUT:239",
+            "measurement": "voltage"
+        },
+        {
             "device_name": "Cooling Panel Status",
             "ip": "10.36.15.233",
             "port": 8086,
@@ -729,6 +792,15 @@
             "device_code": "MOD20",
             "zone": "COMPSPEED",
             "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Compressor Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD20",
+            "zone": "COMPI",
+            "measurement": "current"
         }
     ],
     "CCR NOC Rack": [
@@ -841,6 +913,15 @@
             "measurement": "misc"
         },
         {
+            "device_name": "UPS Health Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "NET02",
+            "zone": "ANALOGINPUT:239",
+            "measurement": "voltage"
+        },
+        {
             "device_name": "Cooling Panel Status",
             "ip": "10.36.15.233",
             "port": 8086,
@@ -911,6 +992,15 @@
             "device_code": "MOD21",
             "zone": "COMPSPEED",
             "measurement": "misc"
+        },
+        {
+            "device_name": "Cooling Panel Compressor Status",
+            "ip": "10.36.15.233",
+            "port": 8086,
+            "panel_no": "iam-gw-210775",
+            "device_code": "MOD21",
+            "zone": "COMPI",
+            "measurement": "current"
         }
     ]
 }
